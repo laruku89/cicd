@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      main
+jobs:
+    deploy_job:
+      runs-on: ubuntu-latest
+      name: deploy
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: Deploy file
+          uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+          with:
+            username: violaon
+            password: 12345
+            server: violaonlinestore.com
+            port: 22
+            remote_path: /home/violaon/public_html
+            sftp_only: true
